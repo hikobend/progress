@@ -13,5 +13,5 @@ Rails.application.routes.draw do
       delete '/todos/destroy_all', to: 'todos#destroy_all'
       resources :todos, only: %i[index show create update destroy]
     end
-  end
+  end 
 end
