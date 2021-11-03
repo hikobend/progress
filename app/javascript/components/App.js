@@ -1,0 +1,94 @@
+import React from 'react'
+import { Switch, Route, Link } from 'react-router-dom'
+import styled from 'styled-components'
+import AddTodo from './AddTodo'
+import TodoList from './TodoList'
+import EditTodo from './EditTodo'
+import './App.css'
+
+const Nabvar = styled.nav`
+  background: #80FF80;
+  min-height: 8vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+`
+
+const Logo = styled.div`
+  font-weight: bold;
+  font-size: 23px;
+  letter-spacing: 3px;
+`
+
+const NavItems = styled.ul`
+  display: flex;
+  width: 400px;
+  max-width: 40%;
+  justify-content: space-around;
+  list-style: none;
+`
+
+const NavItem = styled.li`
+  font-size: 10px;
+  font-weight: bold;
+  opacity: 0.7;
+  &:hover {
+    opacity: 1;
+  }
+`
+
+const Wrapper = styled.div`
+  width: 700px;
+  max-width: 85%;
+  margin: 20px auto;
+`
+
+function App() {
+  return (
+    <>
+      <Nabvar>
+        <Logo>
+          <Link to="/todos">
+            Todo
+          </Link>
+        </Logo>
+        <NavItems>
+          <NavItem>
+            <Link to="/todos">
+              ログイン
+            </Link>
+          </NavItem> 
+          <NavItem>
+            <Link to="/todos">
+              新規登録
+            </Link>
+          </NavItem> 
+          <NavItem>
+            <Link to="/todos">
+              ログアウト
+            </Link>
+          </NavItem> 
+          <NavItem>
+            <Link to="/todos">
+              Todoリスト
+            </Link>
+          </NavItem>
+          <NavItem>
+            <Link to="/todos/new">
+              Todoリスト追加
+            </Link>
+          </NavItem>
+        </NavItems>
+      </Nabvar>
+      <Wrapper>
+        <Switch>
+          <Route exact path="/todos" component={TodoList} />
+          <Route exact path="/todos/new" component={AddTodo} />
+          <Route path="/todos/:id/edit" component={EditTodo} />
+        </Switch>
+      </Wrapper>
+    </>
+  )
+}
+
+export default App
